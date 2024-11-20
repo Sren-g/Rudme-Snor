@@ -1,0 +1,11 @@
+
+
+Background image :  B: 34498 H: 1800 
+
+Background size; 
+onDOMload 
+let size = 34498 / screen.width()  
+getElementbyid()
+
+
+

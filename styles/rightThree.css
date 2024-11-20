@@ -1,0 +1,13 @@
+#rightThree{
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    left:300vw; 
+    background-color: pink;
+    overflow-y: hidden;
+    opacity: 0; 
+} 
+
+#rightThree.loaded{
+    opacity: 1; 
+    } 

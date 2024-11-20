@@ -1,0 +1,8 @@
+#rightFour{
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    left:400vw; 
+    background-color: blue;
+    overflow-y: hidden;
+    } 

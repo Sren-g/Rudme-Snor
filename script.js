@@ -21,6 +21,46 @@ document.addEventListener('DOMContentLoaded', () => {
         centerImg.style.opacity = 1;
     }, 800);
 
+    const paper = document.getElementById("paper");
+    const overlay = document.getElementById("overlay");
+    
+    // Add event listener for the click event
+    paper.addEventListener("click", () => {
+      // Step 1: Trigger the fly-away animation
+      paper.classList.add('fly-away');
+      console.log("flying away");
+    
+      // Step 2: Wait for the animation to complete, then expand
+      setTimeout(() => {
+        paper.classList.remove('fly-away'); // Remove fly-away class
+        paper.classList.add('expanded');   // Add expanded class
+    
+        // Show overlay for background dimming
+        overlay.style.display = 'block';
+    
+        overlay.addEventListener('click', closePaper);
+        paper.appendChild(closeButton);
+      }, 3000); // Match the duration of fly-away animation
+    });
+    
+    // Close the expanded view
+    function closePaper() {
+      // Remove expanded styles and hide overlay
+      paper.classList.remove('expanded');
+      overlay.style.display = 'none';
+    
+      // Remove the close button
+      const closeButton = paper.querySelector('.close-btn');
+      if (closeButton) closeButton.remove();
+    
+      // Optionally reset paper position (to clothesline)
+      paper.style.transform = translateX("-50%"), translateY(0), scale(1);
+    }
+    
+    
+
+
+
 }); 
 
 
@@ -55,6 +95,4 @@ window.addEventListener('wheel', (event) => {
     }
     } 
     );
-
-
 

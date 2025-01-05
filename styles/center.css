@@ -1,7 +1,20 @@
-body{
+@property --log-top {
+    syntax: "<length>";
+    inherits: false;
+    initial-value: 18vh;
+}
 
+@property --text-top{
+    syntax: "<length>";
+    inherits: false;
+    initial-value: 18vh; 
+}
+
+
+
+body {
     overflow: hidden;
-} 
+}
 
 #scrollContainer {
     display: flex;
@@ -11,21 +24,14 @@ body{
     overflow-x: visible; /* Allow horizontal scroll */
     scroll-behavior: smooth; /* Smooth scrolling */
     background-image: url(../assets/Grass-long.png);
-     background-position: left top; 
-   background-size: auto 100%;
+    background-position: left top;
+    background-size: auto 100%;
     background-repeat: no-repeat;
 }
 
-
-
-.container-fluid{
+.container-fluid {
     scroll-snap-align: center;
-} 
- 
-
-
-
-
+}
 
 @keyframes swayRope {
     0% {
@@ -45,317 +51,179 @@ body{
     }
 }
 
+@media (max-width: 500px) {
+
+    #BackgroundFirstTwo {
+       margin-left: -300px; 
+    }
+
+}
 
 
 
 @font-face {
     font-family: Magilio;
     src: url(../fonts/Magilio.ttf);
-  }
-
-
-
-/* Big screen */ 
-@media only screen and (min-width: 768px){
-
-    #BackgroundFirstTwoMobile{
-        position: absolute;
-        width: 200vw;
-        height: 100vh; 
-        bottom: 0vh;
-        z-index: 3;
-        transform-origin: left center; 
-            animation: swayRope 40s 2s infinite;
-            opacity: 0;    /* Start hidden */ 
-    } 
-
-    #BackgroundFirstTwo{
-        position: absolute;
-        width: 200vw;
-        height: 100vh; 
-        bottom: 0vh;
-        z-index: 3;
-        transform-origin: left center; 
-            animation: swayRope 40s 2s infinite;
-        
-    } 
-
-    #PoleLeftOne{
-        position: absolute;
-        left:20; 
-        width: 80px;
-        height: 90vh;
-        bottom: 0;
-    }
-
-    .container-fluid{
-        background-position: center;
-    } 
-    
-#center{
-    position: absolute;
-    height: 100vh;
-    width: 100vw;
-    overflow: hidden;
-    } 
-    
-
-    #frontImage{
-        display: flex;
-        position: relative;
-        background-image: url(../assets/logo1.png);
-        background-size: contain;
-        background-position-x: center; /* goated */
-        background-repeat: no-repeat;
-        width: 60vw;
+}
+    #frontImage {
+        width: 100vw;
         height: 40vh;
-        top: 18%;
-        justify-self: center;
-        align-self: center;;
-        align-self: center; 
-        overflow-y: hidden;
-        display: block;
-        opacity: 0;     /* Start hidden */
-        z-index: 0;
-        }
-        
-        #frontInfo{
-        display: flex;
-        position: relative;
-        justify-self: center;
-        align-self: center;
-        justify-content: center;
-        align-content: center;
-        width: 20vw; 
-        height: 20vh; 
-        text-align: center;
-        flex-direction: column;
-        margin-top: 10%;
-        
-        } 
-        
-        #frontInfo p{
-            justify-self: center;
-        font-size: 40px;
-        color: white;
-        font-family: Magilio;
-        font-weight: bold;
-            } 
-
-    /*
-    #tøjsnor1{
-        width: 100%;
-        height: 100%;
-        position: absolute; 
-        margin: 0;
-        bottom: 0vh;
-        left: 0vw;
-        z-index: 2;
-        transform-origin: left center; 
-        animation: swayRope 10s 2s infinite;
-    } 
-    */
-
-  /*  #bukser{
-        background-image: url(../assets/Jeans3.png);
-        background-size: cover;
-        background-repeat: no-repeat;
-        z-index: 1;
-        position: relative;
-        height: 70vh;
-        width: 25vw;
-        justify-self: end;
-        bottom: 44.3vh;
-        rotate: 2deg;
-        right: 10.3vw;
-        animation: sway 10s 2s infinite;
-    } 
-*/
-
-    #billetButton{
-        display: flex;
-        position: relative;
+        top: var(--log-top);
+    }
+    
+    /* Venstre pæl side 1 */
+    #PoleLeftOne {
+        width: 15%;
+        height: 90vh;
+    }
+    
+    #frontInfo {
+        width: 100vw;
+        height: 20vh;
+        line-height: 25px;
+        top: var(--text-top); 
+  
+    }
+    
+    #frontInfo p {
+        font-size: 35px;
+      
+    }
+    
+    #billetButton {
         height: 12vh;
-        width: 15vw;
-        color: black;
-        background-color: rgba(255, 255, 255, 0.8);
-        border: none;
-        justify-self: center;
+        width: 230px; 
         line-height: 12vh;
-        justify-content: center;
-        align-content: center;
-        bottom:2vh; 
-        z-index: 5;
-        border-radius: 25px;
-        } 
-
-        #billetButton:hover{
-            background-color: #50d953;
-            transform: translateY(-5px);
-
-        } 
-
-        
-        #billetButton p{
-            display: flex;
-            font-size: 55px;
-            position: relative;
-         color: black; 
-        font-family: Magilio;
-        } 
-} 
-
-/* Small screen */ 
-@media only screen and (max-width: 768px){
-
-    #BackgroundFirstTwo{
-        position: absolute;
-        width: 200vw;
-        height: 100vh; 
-        bottom: 0vh;
-        z-index: 0;
-        transform-origin: left center; 
-            animation: swayRope 40s 2s infinite;
-            opacity: 0;    /* Start hidden */ 
-    } 
-
-    #BackgroundFirstTwoMobile{
-        position: absolute;
-        width: 200vw;
-        height: 100vh; 
-        bottom: 0vh;
-        z-index: 5;
-        transform-origin: left center; 
-            animation: swayRope 40s 2s infinite;
-            opacity: 1;    /* Start hidden */ 
-    } 
-
-    #PoleLeftOne{
-        position: absolute;
-        left:20; 
-        width: 80px;
-        height: 90vh;
-        bottom: 0;
+       top: var(--text-top); 
     }
-        
-    .container-fluid{
-        background-position: center;
-    } 
-    
-#center{
+
+    #billetButton p {
+        font-size: 35px;
+    }
+
+/* Tøjsnor for 2 elementer uden pæle */
+#snor1{
     position: absolute;
-    height: 100vh;
-    width: 100vw;
-    overflow: hidden;
-    } 
-    
+    height: 3px; 
+    width: 100vw; 
+    background-color: rgb(95, 49, 23); 
+    top:5vh; 
+}
 
-    #frontImage{
-        display: flex;
-        position: relative;
-        background-image: url(../assets/logo1.png);
-        background-size: contain;
-        background-position-x: center; /* goated */
-        background-repeat: no-repeat;
-        width: 60vw;
-        height: 40vh;
-        justify-self: center;
-        align-self: center;
-        top: 35vh; 
-        overflow-y: hidden;
-        display: block;
-        opacity: 0;     /* Start hidden */
-        z-index: 1;
-        }
-        
-        #frontInfo{
-        display: flex;
-        position: relative;
-        justify-self: center;
-        align-self: center;
-        justify-content: center;
-        align-content: center;
-        width: 50vw; 
-        height: 20vh; 
-        text-align: center;
-        flex-direction: column;
-        
-        margin-top: 20vh;
-        
-        } 
-        
-        #frontInfo p{
-            justify-self: center;
-        font-size: 25px;
-        color: white;
-        font-family: Magilio;
-        font-weight: bold;
-            } 
 
-    /*
-    #tøjsnor1{
-        width: 100%;
-        height: 100%;
-        position: absolute; 
-        margin: 0;
-        bottom: 0vh;
-        left: 0vw;
-        z-index: 2;
-        transform-origin: left center; 
-        animation: swayRope 10s 2s infinite;
-    } 
-    */
 
-  /*  #bukser{
-        background-image: url(../assets/Jeans3.png);
-        background-size: cover;
-        background-repeat: no-repeat;
-        z-index: 1;
-        position: relative;
-        height: 70vh;
-        width: 25vw;
-        justify-self: end;
-        bottom: 44.3vh;
-        rotate: 2deg;
-        right: 10.3vw;
-        animation: sway 10s 2s infinite;
-    } 
-*/
-
-    #billetButton{
-        display: flex;
-        position: relative;
-        height: 15vh;
-        width: 60vw;
-        color: black;
-        background-color: rgba(255, 255, 255, 0.8);
-        border: none;
-        justify-self: center;
-        line-height: 15vh;
-        justify-content: center;
-        align-content: center;
-         
-        z-index: 2;
-        border-radius: 25px;
-        } 
-
-        #billetButton:hover{
-            background-color: pink;
-
-        } 
-
-        
-        #billetButton p{
-            display: flex;
-            font-size: 40px;
-            position: relative;
-         color: black; 
-        font-family: Magilio;
-        } 
+#tøj1{
+    position: absolute;
+    height: 60vh;
+    top: 2vh; 
+    width: 60vw;
 
 } 
 
+#klemmeForside2{
+    position: relative;
+    background-image: url(../assets/tøjKlemme.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-y:top; 
+    float: right;
 
-   
-        
+    margin-right: 12vw;
+    height: 40px; 
+    width: 40px; 
+   z-index: 10;
+}
 
+#klemmeForside1{
+    position: relative;
+    background-image: url(../assets/tøjKlemme.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+ 
+    margin-left: 12vw;
+    background-position-y:top; 
+    float: left;
+    height: 40px;
+    width: 40px;
+    z-index: 10;
+}
+
+
+#bukser{
+    position: relative;
+    width: 100%; 
+   padding-top: 0; 
+   margin-top: -18px;
+} 
+
+/* Venstre pæl side 1 */
+#PoleLeftOne {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+.container-fluid {
+    background-position: center;
+    height: 100vh; 
+    padding: 0px; 
+}
+
+#center {
+    position: absolute;
+    overflow: hidden;
+}
+
+#frontImage {
+    display: flex;
+    position: relative;
+    background-image: url(../assets/logo1.png);
+    background-size: contain; 
+    background-position-y: bottom; 
+    background-position-x: center; 
+    background-repeat: no-repeat;
+    justify-self: center;
+    align-self: center;
+    overflow-y: hidden;
+     z-index: 0
+}
+
+#frontInfo {
+    display: flex; 
+    position: relative;
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+}
+
+#frontInfo p {
+    justify-self: center;
+    color: white;
+    font-family: Magilio;
+    font-weight: bold;
+}
+
+#billetButton {
+    display: flex;
+    position: relative;
+    color: black;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    justify-self: center;
+    justify-content: center;
+    align-content: center;
+    z-index: 5;
+    border-radius: 25px;
+}
+
+#billetButton:hover {
+    background-color: #50d953;
+    transform: translateY(-5px);
+}
+
+#billetButton p {
+    display: flex;
+    position: relative;
+    color: black;
+    font-family: Magilio;
+}

@@ -49,7 +49,15 @@
         left: 40vw;
         top: 14vh;
         align-items: center;
-        
+    } 
+
+    #lagen{
+        position: absolute;
+        height: 80vh; 
+        width: auto; 
+        left: 30vw;
+        top:1.2vh; 
+       padding-top: 0; 
     } 
 
     .lagenButton{
@@ -200,3 +208,4 @@ background-size: cover;
         transform: translateY(0deg);
     }
 }
+

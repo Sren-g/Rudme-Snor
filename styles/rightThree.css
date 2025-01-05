@@ -6,8 +6,8 @@
     background-color: pink;
     overflow-y: hidden;
     opacity: 0; 
+    justify-content: center;
+    justify-items: center;
 } 
 
-#rightThree.loaded{
-    opacity: 1; 
-    } 
+  

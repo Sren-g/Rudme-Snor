@@ -1,0 +1,7 @@
+#rightEight{
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    left:800vw; 
+    overflow-y: hidden;
+    } 

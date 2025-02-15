@@ -1,0 +1,5 @@
+Link på artist navnet -> Youtube 
+
+Til siden pil på forsiden 
+
+Siden rykker sig lidt når man går ind på den - Signify scrolling

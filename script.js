@@ -41,6 +41,36 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 3000); // Match the duration of fly-away animation
     });
     
+    document.addEventListener("DOMContentLoaded", function() {
+        const scrollContainer = document.getElementById('scrollContainer');
+    
+        const lazyLoadBackground = (element) => {
+            const bgImage = element.getAttribute('data-bg');
+            if (bgImage) {
+                element.style.backgroundImage = bgImage;
+                element.removeAttribute('data-bg');
+            }
+        };
+    
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    lazyLoadBackground(entry.target);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        });
+    
+        observer.observe(scrollContainer);
+    });
+
+
+
+
     // Close the expanded view
     function closePaper() {
       // Remove expanded styles and hide overlay
@@ -76,6 +106,11 @@ window.addEventListener('wheel', (event) => {
         document.getElementById("rightFive"),
         document.getElementById("rightSix"),
         document.getElementById("rightSeven"),
+        document.getElementById("rightEight"),
+        document.getElementById("rightNine"),
+        document.getElementById("rightTen"),
+        document.getElementById("rightEleven"),
+        document.getElementById("rightTwelve"),
     ];
     // Scroll up to move left
     if (event.deltaY < 0 && currentIndex > 0 )  {

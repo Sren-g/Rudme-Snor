@@ -1,0 +1,214 @@
+    @keyframes swayRope {
+        0% {
+            transform: rotate(0deg);
+        }
+        25% {
+            transform: rotate(0.2deg);
+        }
+        50% {
+            transform: rotate(-0.2deg);
+        }
+        75% {
+            transform: rotate(0.2deg);
+        }
+        100% {
+            transform: rotate(0deg);
+        }
+    }
+
+
+
+/* Big screen */ 
+@media only screen and (min-width: 768px){
+/*
+    #tøjsnor2{
+        width: 100vw;
+        height: 100vh;
+        position: absolute; 
+        left:0vw;
+        transform-origin: right center; 
+        animation: swayRope 10s 2s infinite;
+        bottom: 0vh;
+        z-index: 0;
+    } 
+*/
+    #lagen-menu{
+        position:relative; 
+        width: 20vw;
+        height: 60vh;
+        left: 40vw;
+        top: 14vh;
+        align-items: center;
+    } 
+
+    #lagen{
+        position: absolute;
+        height: 80vh; 
+        width: auto; 
+        left: 30vw;
+        top:1.2vh; 
+       padding-top: 0; 
+    } 
+
+    .lagenButton{
+        position:relative; 
+        height: 6vh;
+        width: 70%;
+        left: 30%;
+        line-height: 3vh;
+        margin-bottom: 5%;
+        background: none;
+        border: 1px solid black;
+        border-radius: 25px;
+        animation: sway 20s ease-in-out infinite;
+       
+    } 
+
+    .lagenButton :hover{
+        border: 1px solid darkgreen;
+        border-radius: 25px;
+        color: darkgreen;
+    } 
+
+        .lagenButton p{
+       margin-top:5%;     
+       font-family: Magilio; 
+       font-size: 14px;
+    } 
+
+
+
+#logo{
+    margin-top: 1%;
+    height: 10vh; 
+    width: 15vh; 
+    position: relative;
+background-image: url(../assets/logo1.png);
+justify-self: center;
+background-size: cover; 
+
+} 
+    }
+
+
+        /* Small screen */ 
+@media only screen and (max-width: 768px){
+
+    #frontImage2{
+        position: absolute;
+        background-image: url(../assets/lagenMenu2.png);
+        background-size: 300% 100%;
+        background-position-x: center; /* goated */
+        width: 110vw;
+        height: 100vh;
+        top:-14vh;
+        right: 0.1vw;
+        justify-self: center;
+        align-self: center;
+        overflow-y: hidden;
+        display: block;
+        animation: sway 20s ease-in-out infinite;
+        
+        }
+
+    #lagen-menu{
+        position:relative; 
+        width: 40vw;
+        height: 60vh;
+        left: 30vw;
+        top: 5vh;
+        align-items: center;
+        
+    } 
+
+    .lagenButton{
+        position:relative; 
+        height: 15%;
+        width: 90%;
+        left: 25%;
+        margin-bottom: 5%;
+        background: none;
+        border: 1px solid black;
+        border-radius: 25px;
+        animation: sway 20s ease-in-out infinite;
+       
+    } 
+
+    #lagenButton3{
+        line-height: 15%;
+    } 
+
+
+        .lagenButton p{
+       margin-top:5%;     
+       font-family: Magilio; 
+       font-size: 14px;
+    } 
+
+
+
+#logo{
+    height: 10vh; 
+    width: 15vh; 
+    position: relative;
+background-image: url(../assets/logo1.png);
+justify-self: center;
+background-size: cover; 
+
+<img id="lagen" src="assets/AndenSideLagen.png" alt="bukser"> 
+
+
+  <div id="lagen-menu">
+    <button class="lagenButton" id="lagenButton1"> <p>Praktisk info</p> </button>
+    <button class="lagenButton" id="lagenButton2"> <p>Information om Rudme</p> </button>
+    <button class="lagenButton" id="lagenButton3"> <p>Information om frivillige</p> </button>
+    <button class="lagenButton" id="lagenButton4"> <p>Information om foreningen</p> </button>
+    <button class="lagenButton" id="lagenButton5"> <p>Artister</p> </button>
+  </div>
+
+
+
+} 
+}
+
+@keyframes sway {
+    0%, 100% {
+        transform: skewY(3deg);
+        transform: skewY(5deg);
+    }
+    25% {
+        transform: skewY(-3deg);
+        transform: skewY(-5deg);
+        transform: translateY(0deg);
+    }
+    50% {
+        transform: skewY(-2deg);
+        transform: skewY(-1deg);
+       
+    }
+    75% {
+        transform: skewY(2deg);
+        transform: skewY(1deg);
+        transform: translateY(0deg);
+    }
+}
+
+
+@keyframes swayMenu {
+    0%, 100% {
+        transform: skewY(3deg);
+    }
+    25% {
+        transform: skewY(5deg);
+    }
+    50% {
+       
+        transform: skewY(-3deg);
+        transform: skewY(-5deg);
+    }
+    75% {
+        
+        transform: translateY(0deg);
+    }
+}
+

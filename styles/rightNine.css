@@ -1,0 +1,7 @@
+#rightNine{
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    left:900vw; 
+    overflow-y: hidden;
+    } 

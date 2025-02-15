@@ -3,52 +3,8 @@
     height: 100vh;
     width: 100vw;
     left:400vw; 
-    background-color: green;
     overflow-y: hidden;
     } 
 
 
-    #tøj1{
-        position: flex;
-        justify-content: center;
-        justify-self: center;
-        height: auto;
-        top: 2.7vh; 
-        width: 600px;
-        background-color: yellow;
-    } 
 
-    #klemmeFjerde1{
-        position: relative;
-        background-image: url(../assets/tøjKlemme.png);
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position-y:top; 
-        float: right;
-        margin-right: 80px;
-        height: 40px; 
-        width: 40px; 
-       z-index: 10;
-    }
-    
-    #klemmeFjerde2{
-        position: relative;
-        background-image: url(../assets/tøjKlemme.png);
-        background-size: contain;
-        background-repeat: no-repeat;
-        margin-left: 5vw;
-        background-position-y:top; 
-        float: left;
-        height: 40px;
-        width: 40px;
-        z-index: 10;
-    }
-    
-    #bukser{
-        position: relative;
-        width: 600px; 
-        height: auto;
-        justify-self: center;
-       padding-top: 0; 
-       margin-top: -130px;
-    } 

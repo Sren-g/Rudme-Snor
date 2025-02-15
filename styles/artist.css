@@ -1,0 +1,72 @@
+#klemmer{
+    position: relative;
+    display: flex; 
+    justify-content: center;
+    justify-self: center;
+    margin: 0 auto;
+    flex-direction: row;
+    align-items: center;
+    gap: clamp(20px, 40vw, 300px);
+    width: 50vw;
+    max-width: 100vw; 
+    z-index: 400;
+    margin-top: 40px;
+} 
+
+.klemmer4{
+    width: 40px;
+    height: 40px;
+    z-index: 400;
+    align-self: flex-end; /* Align this item at the bottom */
+
+}
+#artist1 {
+    display: flex;
+    position: relative;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100vw; /* Fill 100% of the viewport width */
+    height: 80vh; /* Fill 80% of the viewport height */
+    padding: 0;   
+    z-index: 300;  
+    margin-top: -10px;  
+}
+
+#artist1Image{
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 110vw;
+    max-height: 80vh;
+}
+
+#artist1Info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    padding: 10px;
+    z-index: 500;
+    margin-top: -120px; /* Ensure text is below artist1 */
+
+
+}
+
+#artist1Info p {
+    margin: 5px 0;
+    font-family: Magilio;
+    font-size: 45px; /* Adjust as needed */
+    color: cyan; /* Adjust as needed */
+    text-align: center;
+    z-index: 500;
+}
+
+
+/* Media query for larger screens */
+@media (min-width: 768px) {
+
+#artist1Info {
+    margin-top: -120px; /* Ensure text is below artist1 */
+}
+}

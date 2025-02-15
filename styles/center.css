@@ -1,16 +1,3 @@
-@property --log-top {
-    syntax: "<length>";
-    inherits: false;
-    initial-value: 18vh;
-}
-
-@property --text-top{
-    syntax: "<length>";
-    inherits: false;
-    initial-value: 18vh; 
-}
-
-
 
 body {
     overflow: hidden;
@@ -18,151 +5,36 @@ body {
 
 #scrollContainer {
     display: flex;
-    width: 700vw; /* 7 sections wide (7 * 100vw) */
-    height: 100vh;
+    width: 2000vw; /* 7 sections wide (7 * 100vw) */
+    height: 100vh; /* Full viewport height */
     transition: transform 0.5s ease; /* Smooth horizontal scroll transition */
     overflow-x: visible; /* Allow horizontal scroll */
+    overflow-y: hidden; /* Hide vertical scroll */
     scroll-behavior: smooth; /* Smooth scrolling */
-    background-image: url(../assets/Grass-long.png);
-    background-position: left top;
-    background-size: auto 100%;
-    background-repeat: no-repeat;
 }
+
+#background{
+    display: flex;
+    flex-direction: row;
+} 
+
+.backgroundImage{
+    display: flex;
+    height: 100vh;
+    width: auto;
+    overflow-y: hidden;
+    z-index: -10;
+} 
 
 .container-fluid {
     scroll-snap-align: center;
 }
 
-@keyframes swayRope {
-    0% {
-        transform: translateX(0);
-    }
-    25% {
-        transform: translateY(-0.2px);
-    }
-    50% {
-        transform: translateY(0.2px);
-    }
-    75% {
-        transform: translateY(-0.2px);
-    }
-    100% {
-        transform: translateX(0);
-    }
-}
-
-@media (max-width: 500px) {
-
-    #BackgroundFirstTwo {
-       margin-left: -300px; 
-    }
-
-}
-
-
-
 @font-face {
     font-family: Magilio;
     src: url(../fonts/Magilio.ttf);
 }
-    #frontImage {
-        width: 100vw;
-        height: 40vh;
-        top: var(--log-top);
-    }
     
-    /* Venstre pæl side 1 */
-    #PoleLeftOne {
-        width: 15%;
-        height: 90vh;
-    }
-    
-    #frontInfo {
-        width: 100vw;
-        height: 20vh;
-        line-height: 25px;
-        top: var(--text-top); 
-  
-    }
-    
-    #frontInfo p {
-        font-size: 35px;
-      
-    }
-    
-    #billetButton {
-        height: 12vh;
-        width: 230px; 
-        line-height: 12vh;
-       top: var(--text-top); 
-    }
-
-    #billetButton p {
-        font-size: 35px;
-    }
-
-/* Tøjsnor for 2 elementer uden pæle */
-#snor1{
-    position: absolute;
-    height: 3px; 
-    width: 100vw; 
-    background-color: rgb(95, 49, 23); 
-    top:5vh; 
-}
-
-
-
-#tøj1{
-    position: absolute;
-    height: 60vh;
-    top: 2vh; 
-    width: 60vw;
-
-} 
-
-#klemmeForside2{
-    position: relative;
-    background-image: url(../assets/tøjKlemme.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position-y:top; 
-    float: right;
-
-    margin-right: 12vw;
-    height: 40px; 
-    width: 40px; 
-   z-index: 10;
-}
-
-#klemmeForside1{
-    position: relative;
-    background-image: url(../assets/tøjKlemme.png);
-    background-size: contain;
-    background-repeat: no-repeat;
- 
-    margin-left: 12vw;
-    background-position-y:top; 
-    float: left;
-    height: 40px;
-    width: 40px;
-    z-index: 10;
-}
-
-
-#bukser{
-    position: relative;
-    width: 100%; 
-   padding-top: 0; 
-   margin-top: -18px;
-} 
-
-/* Venstre pæl side 1 */
-#PoleLeftOne {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-}
-
 .container-fluid {
     background-position: center;
     height: 100vh; 
@@ -172,6 +44,10 @@ body {
 #center {
     position: absolute;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 #frontImage {
@@ -184,8 +60,11 @@ body {
     background-repeat: no-repeat;
     justify-self: center;
     align-self: center;
+    height: 50vh;
+    width: 100vw;
     overflow-y: hidden;
-     z-index: 0
+     z-index: 0; 
+     top: -5vh;
 }
 
 #frontInfo {
@@ -193,7 +72,7 @@ body {
     position: relative;
     flex-direction: column; 
     align-items: center; 
-    justify-content: center; 
+    justify-content: center;   
 }
 
 #frontInfo p {
@@ -201,6 +80,7 @@ body {
     color: white;
     font-family: Magilio;
     font-weight: bold;
+    font-size: 35px;
 }
 
 #billetButton {
@@ -212,8 +92,15 @@ body {
     justify-self: center;
     justify-content: center;
     align-content: center;
+    align-items: center; /* Center items vertically */
     z-index: 5;
     border-radius: 25px;
+    width: 300px;
+    height: 10vh;
+    text-align: center;
+    line-height: 10vh;
+    margin: 0 auto; 
+   
 }
 
 #billetButton:hover {
@@ -223,7 +110,11 @@ body {
 
 #billetButton p {
     display: flex;
+    align-items: center; /* Center text vertically */
+    justify-content: center; /* Center text horizontally */
     position: relative;
     color: black;
+    font-size: 40px;
     font-family: Magilio;
+    margin: 0; /* Remove default margin */
 }

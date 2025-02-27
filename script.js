@@ -1,49 +1,57 @@
-
 //Start i middle container
 document.addEventListener('DOMContentLoaded', () => {
-    
+    // Center image fade-in effect
     const centerImg = document.getElementById("frontImage");
-    centerImg.style.transition = "opacity 1s ease"; // Fade-in effect
+    if (centerImg) {
+        centerImg.style.transition = "opacity 1s ease";
+        setTimeout(() => { centerImg.style.opacity = 0.3; }, 200);
+        setTimeout(() => { centerImg.style.opacity = 0.6; }, 400);
+        setTimeout(() => { centerImg.style.opacity = 0.9; }, 600);
+        setTimeout(() => { centerImg.style.opacity = 1; }, 800);
+    }
 
-    // Trigger the fade-in effect
-    setTimeout(() => {
-        centerImg.style.opacity = 0,3;
-    }, 200);
-    setTimeout(() => {
-        centerImg.style.opacity = 0,6;
-    }, 400);
-    setTimeout(() => {
-        centerImg.style.opacity = 0,9;
-    }, 600);
-    setTimeout(() => {
-        centerImg.style.opacity = 1;
-    }, 800);
-
+    // Paper animation
     const paper = document.getElementById("paper");
     const overlay = document.getElementById("overlay");
     
-    // Add event listener for the click event
-    paper.addEventListener("click", () => {
-      // Step 1: Trigger the fly-away animation
-      paper.classList.add('fly-away');
-      console.log("flying away");
-    
-      // Step 2: Wait for the animation to complete, then expand
-      setTimeout(() => {
-        paper.classList.remove('fly-away'); // Remove fly-away class
-        paper.classList.add('expanded');   // Add expanded class
-    
-        // Show overlay for background dimming
-        overlay.style.display = 'block';
-    
-        overlay.addEventListener('click', closePaper);
-        paper.appendChild(closeButton);
-      }, 3000); // Match the duration of fly-away animation
-    });
-    
-    document.addEventListener("DOMContentLoaded", function() {
-        const scrollContainer = document.getElementById('scrollContainer');
-    
+    if (paper) {
+        paper.addEventListener("click", () => {
+            paper.classList.add('fly-away');
+            console.log("flying away");
+        
+            setTimeout(() => {
+                paper.classList.remove('fly-away');
+                paper.classList.add('expanded');
+                
+                if (overlay) {
+                    overlay.style.display = 'block';
+                    overlay.addEventListener('click', closePaper);
+                }
+                
+                const closeButton = document.createElement('button');
+                closeButton.classList.add('close-btn');
+                closeButton.textContent = 'X';
+                paper.appendChild(closeButton);
+            }, 3000);
+        });
+    }
+
+    // Close paper function
+    function closePaper() {
+        if (paper) {
+            paper.classList.remove('expanded');
+            if (overlay) overlay.style.display = 'none';
+            
+            const closeButton = paper.querySelector('.close-btn');
+            if (closeButton) closeButton.remove();
+            
+            paper.style.transform = "translateX(-50%) translateY(0) scale(1)";
+        }
+    }
+
+    // Background lazy loading
+    const scrollContainer = document.getElementById('scrollContainer');
+    if (scrollContainer) {
         const lazyLoadBackground = (element) => {
             const bgImage = element.getAttribute('data-bg');
             if (bgImage) {
@@ -51,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 element.removeAttribute('data-bg');
             }
         };
-    
+
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -64,40 +72,14 @@ document.addEventListener('DOMContentLoaded', () => {
             rootMargin: '0px',
             threshold: 0.1
         });
-    
+
         observer.observe(scrollContainer);
-    });
-
-
-
-
-    // Close the expanded view
-    function closePaper() {
-      // Remove expanded styles and hide overlay
-      paper.classList.remove('expanded');
-      overlay.style.display = 'none';
-    
-      // Remove the close button
-      const closeButton = paper.querySelector('.close-btn');
-      if (closeButton) closeButton.remove();
-    
-      // Optionally reset paper position (to clothesline)
-      paper.style.transform = translateX("-50%"), translateY(0), scale(1);
     }
+
+    // Section scrolling
+    let currentIndex = 0;
     
-    
-
-
-
-}); 
-
-
-let currentIndex = 0; // Index of the center section
-
-
-window.addEventListener('wheel', (event) => {
-
-  const sections = [
+    const sections = [
         document.getElementById("center"),
         document.getElementById("rightOne"),
         document.getElementById("rightTwo"),
@@ -111,22 +93,43 @@ window.addEventListener('wheel', (event) => {
         document.getElementById("rightTen"),
         document.getElementById("rightEleven"),
         document.getElementById("rightTwelve"),
-    ];
-    // Scroll up to move left
-    if (event.deltaY < 0 && currentIndex > 0 )  {
-        i = currentIndex - 1;
-        sections[i].scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
-        currentIndex --; 
-        console.log(currentIndex); 
-        console.log(screen.width());
-    }  // Scroll down to move right
-    if (event.deltaY > 0 && currentIndex < sections.length - 1) {
-        i = currentIndex + 1;
-        sections[i].scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
-        currentIndex ++; 
-        console.log(currentIndex);
-        console.log(event.deltaY);
+    ].filter(section => section !== null); // Filter out null sections
+    
+    function scrollToSection(index) {
+        if (sections[index]) {
+            sections[index].scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
+            currentIndex = index;
+            console.log(currentIndex);
+        } else {
+            console.error(`Section at index ${index} is null or undefined`);
+        }
     }
-    } 
-    );
+    
+    // Mouse wheel scrolling
+    window.addEventListener('wheel', (event) => {
+        if (event.deltaY < 0 && currentIndex > 0) {
+            scrollToSection(currentIndex - 1);
+        } else if (event.deltaY > 0 && currentIndex < sections.length - 1) {
+            scrollToSection(currentIndex + 1);
+        }
+    });
+    
+    // Mobile touch scrolling
+    let touchStartY = 0;
+    
+    window.addEventListener('touchstart', (event) => {
+        touchStartY = event.touches[0].clientY;
+    });
+    
+    window.addEventListener('touchend', (event) => {
+        const touchEndY = event.changedTouches[0].clientY;
+        if (touchStartY - touchEndY > 50 && currentIndex < sections.length - 1) {
+            // Swipe up
+            scrollToSection(currentIndex + 1);
+        } else if (touchEndY - touchStartY > 50 && currentIndex > 0) {
+            // Swipe down
+            scrollToSection(currentIndex - 1);
+        }
+    });
+});
 

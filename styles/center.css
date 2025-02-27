@@ -3,16 +3,6 @@ body {
     overflow: hidden;
 }
 
-#scrollContainer {
-    display: flex;
-    width: 2000vw; /* 7 sections wide (7 * 100vw) */
-    height: 100vh; /* Full viewport height */
-    transition: transform 0.5s ease; /* Smooth horizontal scroll transition */
-    overflow-x: visible; /* Allow horizontal scroll */
-    overflow-y: hidden; /* Hide vertical scroll */
-    scroll-behavior: smooth; /* Smooth scrolling */
-}
-
 #background{
     display: flex;
     flex-direction: row;
@@ -43,11 +33,11 @@ body {
 
 #center {
     position: absolute;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    left:0vw; 
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 #frontImage {
@@ -64,7 +54,7 @@ body {
     width: 100vw;
     overflow-y: hidden;
      z-index: 0; 
-     top: -5vh;
+     top: 5vh;
 }
 
 #frontInfo {
@@ -73,6 +63,7 @@ body {
     flex-direction: column; 
     align-items: center; 
     justify-content: center;   
+    top: 5vh;
 }
 
 #frontInfo p {
@@ -100,6 +91,7 @@ body {
     text-align: center;
     line-height: 10vh;
     margin: 0 auto; 
+    top: 5vh;
    
 }
 

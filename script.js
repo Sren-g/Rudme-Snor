@@ -97,9 +97,17 @@ document.addEventListener('DOMContentLoaded', () => {
     
     function scrollToSection(index) {
         if (sections[index]) {
-            sections[index].scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
-            currentIndex = index;
-            console.log(currentIndex);
+            const scrollContainer = document.getElementById('scrollContainer');
+            if (scrollContainer) {
+                currentIndex = index;
+                currentTranslateX = -index * 100;
+                
+                // Increase transition duration from 0.5s to 0.8s for smooth scrolling
+                scrollContainer.style.transition = 'transform 1.6s cubic-bezier(0.23, 1, 0.32, 1)';
+                scrollContainer.style.transform = `translateX(${currentTranslateX}vw)`;
+                
+                console.log(`Scrolled to section: ${currentIndex}`);
+            }
         } else {
             console.error(`Section at index ${index} is null or undefined`);
         }
@@ -139,22 +147,118 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1000); // Adjust this value as needed (1 second cooldown)
     }, { passive: false }); // This allows preventDefault to work
     
-    // Mobile touch scrolling
-    let touchStartY = 0;
-    
+    // Mobile touch scrolling with drag effect
+    let touchStartX = 0;
+    let initialTransform = 0;
+    let isTouching = false;
+    let currentTranslateX = 0;
+
+    // Initialize the current translate position
+    function updateInitialTransform() {
+        currentTranslateX = -currentIndex * 100; // 100vw per section
+        const scrollContainer = document.getElementById('scrollContainer');
+        if (scrollContainer) {
+            scrollContainer.style.transform = `translateX(${currentTranslateX}vw)`;
+        }
+    }
+
     window.addEventListener('touchstart', (event) => {
-        touchStartY = event.touches[0].clientY;
-    });
-    
+        event.preventDefault();
+        touchStartX = event.touches[0].clientX;
+        isTouching = true;
+        
+        // Get current transform value
+        const scrollContainer = document.getElementById('scrollContainer');
+        if (scrollContainer) {
+            // Remove transition during touch for immediate response
+            scrollContainer.style.transition = 'none';
+            initialTransform = currentTranslateX;
+        }
+    }, { passive: false });
+
+    window.addEventListener('touchmove', (event) => {
+        if (!isTouching) return;
+        
+        const currentX = event.touches[0].clientX;
+        const deltaX = currentX - touchStartX; // How far we've moved
+        
+        // Apply resistance when trying to scroll past the edges
+        let newTranslateX = initialTransform;
+        
+        if ((currentIndex === 0 && deltaX > 0) || 
+            (currentIndex === sections.length - 1 && deltaX < 0)) {
+            // Add resistance when at the edges
+            newTranslateX += deltaX / 3; // Divide by 3 for stronger resistance
+        } else {
+            // Normal movement - convert pixel movement to vw units
+            const movePercentage = (deltaX / window.innerWidth) * 100;
+            newTranslateX += movePercentage;
+        }
+        
+        // Apply the transform
+        const scrollContainer = document.getElementById('scrollContainer');
+        if (scrollContainer) {
+            scrollContainer.style.transform = `translateX(${newTranslateX}vw)`;
+            currentTranslateX = newTranslateX;
+        }
+        
+    }, { passive: false });
+
     window.addEventListener('touchend', (event) => {
-        const touchEndY = event.changedTouches[0].clientY;
-        if (touchStartY - touchEndY > 50 && currentIndex < sections.length - 1) {
-            // Swipe up
-            scrollToSection(currentIndex + 1);
-        } else if (touchEndY - touchStartY > 50 && currentIndex > 0) {
-            // Swipe down
-            scrollToSection(currentIndex - 1);
+        if (!isTouching) return;
+        isTouching = false;
+        
+        const touchEndX = event.changedTouches[0].clientX;
+        const deltaX = touchEndX - touchStartX;
+        const absDeltaX = Math.abs(deltaX);
+        
+        const scrollContainer = document.getElementById('scrollContainer');
+        if (scrollContainer) {
+            // Add smooth transition for snapping
+            scrollContainer.style.transition = 'transform 0.3s cubic-bezier(0.23, 1, 0.32, 1)';
+            
+            // Determine if we should snap to next/previous or stay on current
+            if (absDeltaX > 50 || absDeltaX > window.innerWidth * 0.15) { // 15% of screen width
+                if (deltaX > 0 && currentIndex > 0) {
+                    // Swipe right - previous section
+                    currentIndex--;
+                } else if (deltaX < 0 && currentIndex < sections.length - 1) {
+                    // Swipe left - next section
+                    currentIndex++;
+                }
+            }
+            
+            // Snap to the current section
+            currentTranslateX = -currentIndex * 100;
+            scrollContainer.style.transform = `translateX(${currentTranslateX}vw)`;
+        }
+    });
+
+    // Handle touch cancel
+    window.addEventListener('touchcancel', () => {
+        isTouching = false;
+        
+        const scrollContainer = document.getElementById('scrollContainer');
+        if (scrollContainer) {
+            // Add smooth transition for snapping
+            scrollContainer.style.transition = 'transform 0.3s cubic-bezier(0.23, 1, 0.32, 1)';
+            
+            // Snap to current section
+            currentTranslateX = -currentIndex * 100;
+            scrollContainer.style.transform = `translateX(${currentTranslateX}vw)`;
+        }
+    });
+
+    // Initialize transform position
+    updateInitialTransform();
+
+    // Add resize handler to maintain position
+    window.addEventListener('resize', () => {
+        const scrollContainer = document.getElementById('scrollContainer');
+        if (scrollContainer) {
+            scrollContainer.style.transition = 'none';
+            currentTranslateX = -currentIndex * 100;
+            scrollContainer.style.transform = `translateX(${currentTranslateX}vw)`;
         }
     });
 });
-

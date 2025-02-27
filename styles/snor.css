@@ -1,13 +1,35 @@
-#snor0{
-    position: absolute;
-    height: 3px; 
-    width: 50vw;
-    margin-left: 59vw; 
-    background-color: rgb(95, 49, 23); 
+#snor0 {
+    position: relative;
+    display: flex; 
+    height: 3px;
+    width: 50vw; /* Use vw for relative width */
+    justify-self: left;
+    left: 52.5%;
+    background-color: rgb(95, 49, 23);
     z-index: 700;
     margin-top: 20px;
 }
 
+
+/* Breakpoint for laptop size (screens wider than 1024px) */
+@media (min-width: 768px) {
+    #snor0 {
+        left: 54.5%;
+    }
+}
+
+@media (min-width: 1050px) {
+    #snor0 {
+        left: 52%;
+    }
+}
+
+/* Breakpoint for mobile size (screens narrower than 768px) */
+@media (max-width: 768px) {
+    #snor0 {
+        left: 58.5%;
+    }
+}
 
 
 #snor1{

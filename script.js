@@ -125,6 +125,7 @@ window.addEventListener('wheel', (event) => {
         sections[i].scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
         currentIndex ++; 
         console.log(currentIndex);
+        console.log(event.deltaY);
     }
     } 
     );

@@ -1,5 +1,18 @@
-Link på artist navnet -> Youtube 
+1. Link på artist navnet -> Youtube 
 
-Til siden pil på forsiden 
+2. Til siden pil på forsiden 
+    Siden rykker sig lidt når man går ind på den - Signify scrolling 
 
-Siden rykker sig lidt når man går ind på den - Signify scrolling
+4. Knapper på menuen 
+
+5. Scroll på alting - på Com + tlf 
+
+6. Info siderne 
+    - Animationer
+
+7. Generel dekoration 
+
+8. liste over de animationer vi gerne vil have 
+
+
+

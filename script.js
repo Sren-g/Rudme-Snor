@@ -105,14 +105,39 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     
-    // Mouse wheel scrolling
+    // Mouse wheel scrolling with debounce
+    let isScrolling = false;
+    let scrollTimeout;
+
     window.addEventListener('wheel', (event) => {
+        // Prevent default scrolling behavior
+        event.preventDefault();
+        
+        // If already scrolling, don't respond to additional scroll events
+        if (isScrolling) return;
+        
+        // Set scrolling flag to true
+        isScrolling = true;
+        
+        // Clear any existing timeout
+        clearTimeout(scrollTimeout);
+        
+        // Determine scroll direction
         if (event.deltaY < 0 && currentIndex > 0) {
             scrollToSection(currentIndex - 1);
         } else if (event.deltaY > 0 && currentIndex < sections.length - 1) {
             scrollToSection(currentIndex + 1);
+        } else {
+            // If no scrolling happened, reset the flag immediately
+            isScrolling = false;
+            return;
         }
-    });
+        
+        // Set a timeout to reset the scrolling flag
+        scrollTimeout = setTimeout(() => {
+            isScrolling = false;
+        }, 1000); // Adjust this value as needed (1 second cooldown)
+    }, { passive: false }); // This allows preventDefault to work
     
     // Mobile touch scrolling
     let touchStartY = 0;

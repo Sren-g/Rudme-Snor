@@ -50,11 +50,12 @@ body {
     background-repeat: no-repeat;
     justify-self: center;
     align-self: center;
-    height: 50vh;
+    height: 30vh;
     width: 100vw;
     overflow-y: hidden;
      z-index: 0; 
-     top: 5vh;
+     top: 52vh;
+     right: 1vw;
 }
 
 #frontInfo {
@@ -63,22 +64,23 @@ body {
     flex-direction: column; 
     align-items: center; 
     justify-content: center;   
-    top: 5vh;
+    bottom: -54vh;
+    right: -10px;
 }
 
 #frontInfo p {
     justify-self: center;
-    color: white;
+    color: rgb(255, 255, 255);
     font-family: Magilio;
     font-weight: bold;
-    font-size: 35px;
+    font-size: 27px;
 }
 
 #billetButton {
     display: flex;
     position: relative;
     color: black;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0);
     border: none;
     justify-self: center;
     justify-content: center;
@@ -91,8 +93,7 @@ body {
     text-align: center;
     line-height: 10vh;
     margin: 0 auto; 
-    top: 5vh;
-   
+    top: -22vh;
 }
 
 #billetButton:hover {

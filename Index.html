@@ -24,14 +24,64 @@
     <link href="styles/rightTen.css" rel="stylesheet">
     <link href="styles/rightEleven.css" rel="stylesheet">
     <link href="styles/rightTwelve.css" rel="stylesheet">
- 
-  
+    
+    <!-- Add new style for the fixed navigation elements -->
+    <style>
+      .fixed-nav {
+        position: fixed;
+        z-index: 1000;
+      }
+      
+      #fixedBilletButton {
+        top: 15px;
+        left: 15px;
+        padding: 3px 8px 0px 8px;
+        font-size: 17px;
+        background-color: #ff0000; /* Red background */
+        color: white; /* White text */
+        font-family: 'Magilio', sans-serif; /* Using Magilio font */
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+      }
+      
+      #hamburgerMenu {
+        top: 15px;
+        right: 15px;
+        width: 30px; /* Smaller width */
+        height: 24px; /* Smaller height */
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 4px 0; /* Reduced padding */
+        background-color: transparent; /* No background */
+        border-radius: 0;
+        box-shadow: none; /* Remove shadow */
+      }
+      
+      .hamburger-line {
+        width: 100%;
+        height: 2px; /* Thinner lines */
+        background-color: white; /* White lines */
+        border-radius: 1px;
+      }
+    </style>
   </head>
 
   
   <body>
     <script src="script.js" ></script>
 
+    <!-- Fixed navigation elements -->
+    <button id="fixedBilletButton" class="fixed-nav">Køb billet</button>
+    
+    <div id="hamburgerMenu" class="fixed-nav">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
 
 <!-- Column 1 -->
 <div id="scrollContainer" data-bg="url(../assets/BackgroundLarge.jpg)"> 
@@ -43,10 +93,11 @@
 <div class="container-fluid" id="center"> 
   <div id="frontImage"></div>
   <div id="frontInfo"> 
-  <p> 2025</p>
-  <p> Billetsalget er i gang</p>
+  <p> 17-18-19 JULI 2025</p>
+
 </div> 
-<button id="billetButton"> <p> køb billet!</p>  </button>
+<!-- Removing the original button since we now have a fixed one -->
+<!-- <button id="billetButton"> <p> køb billet!</p>  </button> -->
 
 </div>  
 
@@ -57,27 +108,70 @@
 </div>
 </div>
 
-
 <div class="container-fluid" class="imageBackground" id="rightTwo"> 
   <div id="snor1"></div>
- <!--  <div id="paper">Click me!</div>--> 
-  <div id="overlay"></div>
-
+  <div class="scrollable-container">
+    <h1>Rudme Festival 2025</h1>
+    
+    <p class="intro-text">
+      Velkommen til Rudme Festival 2025! Vi er glade for at kunne præsentere et fantastisk program 
+      med både nye og etablerede kunstnere. I år byder vi på tre dage fyldt med musik, kunst, 
+      workshops og fællesskab i de smukke omgivelser.
+    </p>
+    
+    <img class="festival-image" src="assets/festival-area.jpg" alt="Festival område">
+    
+    <p>
+      Rudme Festival er en intim festival med fokus på kvalitetsmusik og god stemning. 
+      Vi lægger vægt på bæredygtighed, lokale råvarer og et program, der favner bredt. 
+      Oplev både danske og internationale artister på vores scener.
+    </p>
+    
+    <h2>Praktisk information</h2>
+    
+    <p>
+      Festivalen afholdes den 17.-19. juli 2025. Portene åbner torsdag kl. 12:00, 
+      og musikken starter kl. 15:00. Campingområdet åbner onsdag den 16. juli kl. 14:00.
+    </p>
+    
+    <img class="festival-image" src="assets/camping-area.jpg" alt="Camping område">
+    
+    <h2>Mad og drikke</h2>
+    
+    <p>
+      Der vil være et bredt udvalg af madboder med alt fra vegetariske retter til street food og lokale specialiteter. 
+      Vores barer serverer både lokale øl, økologiske vine og forfriskende cocktails.
+    </p>
+    
+    <img class="festival-image" src="assets/food-area.jpg" alt="Mad område">
+    
+    <h2>Transport</h2>
+    
+    <p>
+      Vi anbefaler at benytte offentlig transport eller samkørsel til festivalen. Der vil være shuttlebusser fra nærmeste station. 
+      Hvis du kommer i bil, er der parkeringsmuligheder tæt på festivalpladsen.
+    </p>
+    
+    <p class="outro-text">
+      Vi glæder os til at byde dig velkommen til tre uforglemmelige dage i musikkens tegn!
+    </p>
+  </div>
 </div>
 
 <div class="container-fluid" class="imageBackground" id="rightThree">
-  <div id="snor1"> </div>
-  <div id="klemmer"> 
-    <img class="klemmer4" src="assets/tøjKlemme.png" alt="klammer">
-    <img class="klemmer4" src="assets/tøjKlemme.png" alt="klammer">
+  <div id="content">
+    <div id="snor1"></div>
+    <div id="klemmer"> 
+        <img class="klemmer4" src="assets/tøjKlemme.png" alt="klammer">
+        <img class="klemmer4" src="assets/tøjKlemme.png" alt="klammer">
+      </div>
+      <div id="artist1"> 
+        <img id="artist1Image" src="assets/artist1-ezgif.com-crop.gif">  
   </div>
-  <div id="artist1"> 
-    <img id="artist1Image" src="assets/artist1-ezgif.com-crop.gif">  
-</div>
-<div id="artist1Info"> 
-<p> Komorebi Garden</p>
-<p> 20:00</p>
-</div>
+  <div id="artist1Info"> 
+    <p> Komorebi Garden</p>
+  </div>
+  </div>
 </div>
 
 <div class="container-fluid" id="rightFour"> 
@@ -92,7 +186,6 @@
 </div>
 <div id="artist1Info"> 
   <p> Komorebi Garden</p>
-  <p> 20:00</p>
 </div>
 </div>
 </div>

@@ -26,7 +26,7 @@
     align-items: flex-start;
     justify-content: center;
     width: 100vw; /* Fill 100% of the viewport width */
-    height: 80vh; /* Fill 80% of the viewport height */
+    height: calc(80vh - 80px); /* Reduce height to make room for info */
     padding: 0;   
     z-index: 300;  
     margin-top: -10px;  
@@ -48,25 +48,18 @@
     width: 100vw;
     padding: 10px;
     z-index: 500;
-    margin-top: -120px; /* Ensure text is below artist1 */
-
-
+    position: absolute; /* Change from relative to absolute */
+    bottom: 8vh; /* Position exactly 20px from bottom */
+    left: 0; /* Ensure it stays aligned horizontally */
 }
 
 #artist1Info p {
     margin: 5px 0;
     font-family: Magilio;
     font-size: 45px; /* Adjust as needed */
-    color: cyan; /* Adjust as needed */
+    color: rgb(255, 255, 255); /* Adjust as needed */
     text-align: center;
     z-index: 500;
 }
 
 
-/* Media query for larger screens */
-@media (min-width: 768px) {
-
-#artist1Info {
-    margin-top: -120px; /* Ensure text is below artist1 */
-}
-}

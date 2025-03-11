@@ -15,6 +15,23 @@ body {
     overflow-y: hidden;
     z-index: -10;
 } 
+.backgroundImage2{
+    position: relative;
+    display: flex;
+    height: 100vh;
+    width: auto;
+    overflow-y: hidden;
+    z-index: 10;
+    margin-bottom: -100vh;
+    color: tomato;
+} 
+
+.combined-background {
+    position: relative; /* Vigtigt for at være container til absolutte elementer */
+    width: auto;
+    height: auto;
+    float: left;
+}
 
 .container-fluid {
     scroll-snap-align: center;

@@ -87,9 +87,16 @@
 <!-- Column 1 -->
 <div id="scrollContainer" data-bg="url(../assets/BackgroundLarge.jpg)"> 
   <div id="background">
-  <img class="backgroundImage" src="assets/BackgroundNy.jpg" alt="background" loading="lazy">  
-  <img class="backgroundImage" src="assets/BackgroundNyMirroed.png" alt="background" loading="lazy">
-  <img class="backgroundImage" src="assets/BackgroundNy.jpg" alt="background" loading="lazy">  
+  <!-- Første sæt med både BackgroundNy og BackgroundNyBUND -->
+  <div class="combined-background">
+    
+    <img class="backgroundImage2" src="assets/BackgroundNyBUND.png" alt="background overlay" loading="lazy">  
+    <img class="backgroundImage" src="assets/BackgroundNy.jpg" alt="background" loading="lazy">
+  </div>
+  
+  <!-- De øvrige baggrunde uden overlay -->
+  <img class="backgroundImage" src="assets/BackgroundNyMirroed.png" alt="background mirrored" loading="lazy">
+  <img class="backgroundImage" src="assets/BackgroundNy.jpg" alt="background repeated" loading="lazy">  
   </div>
 <div class="container-fluid" id="center"> 
   <div id="frontImage"></div>
